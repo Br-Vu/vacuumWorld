@@ -1,2 +1,3 @@
 # vacuumWorld
-Shows a implementation for breadth first search on a pre-determined world.
+
+Shows an implementation for breadth first search on the pre-determined vacuum world from the textbook Artifical Intelligence a Modern Approach 3rd edition. 
