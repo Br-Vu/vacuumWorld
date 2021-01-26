@@ -1,4 +1,3 @@
-package breadthDepthSearchVacuum;
 import java.util.ArrayList;
 
 
@@ -38,23 +37,19 @@ public class Main {
 				break;
 			}
 			
-			// Checks inside the frontier to see if our goal solution is there
-			if (frontier.contains(goalState1) || frontier.contains(goalState2)) {
-				System.out.println("\nIterations: " + counter);
-				break;
-			}
-			
-			// Counts how many times we've looped
-			counter ++;
-			
-			
 			// Remove node from frontier
 			int nodeCheck = frontier.remove(0);
 			
-			// Add to checked nodes
-			explored.add(nodeCheck);
+			System.out.println("Node: " + nodeCheck);
 			
-			System.out.println(nodeCheck);
+			// Checks inside the frontier to see if our goal solution is there
+			if (nodeCheck == goalState1 || nodeCheck == goalState2) {
+				System.out.println("\nGoal State " + nodeCheck + " Reached!\nIterations: " + counter);
+				break;
+			}
+		
+			// Counts how many times we've looped
+			counter ++;
 			
 			// Possible states and their respective children
 			if(nodeCheck == 1) {
@@ -104,24 +99,29 @@ public class Main {
 				possibleChildren.add(8);	
 			}
 			
+			// Add to checked nodes
+			explored.add(nodeCheck);
+			
 			// If there are any children in our explored set, they are 
 			// removed as possible children options
 			possibleChildren.removeAll(explored);
+			
 			
 			// If there are any children already in the frontier,
 			// they are removed as possible children options
 			possibleChildren.removeAll(frontier);
 			
+			
 			// Any outstanding children not already in frontier or 
 			// explored are added to the frontier to be explored
 			frontier.addAll(possibleChildren);
 			
-			System.out.println(frontier);
+			System.out.println("Frontier: " + frontier);
 			
 			
 		}
 	}
 	public static void main(String[] args) {
-		vacuumBFS(6);
+		vacuumBFS(1);
 	}
 }
